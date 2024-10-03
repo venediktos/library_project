@@ -15,7 +15,7 @@
                         Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="/untitled/books.php">Books</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
@@ -42,9 +42,17 @@
                     <?php
                     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
                     ?>
-                        <a class = "nav-link active" href = "/untitled/admin.php">Admin</a>
+                        <div class="dropdown">
+                            <a class = "nav-link active dropdown-toggle" href = "/untitled/account.php"><?php echo $_SESSION["username"] ?></a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="Manage Account" href="#">Action</a></li>
+                                <li><a class="" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
                     <?php
-                    } else {
+                    } elseif (!(isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true)) {
                         ?>
                         <a class = "nav-link active" href = "/untitled/login.php">Login</a>
                     <?php
@@ -55,7 +63,21 @@
                 </li>
                 <li class = "nav-item">
                     <?php
-                    if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+                    if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
+                        ?>
+                        <a class = "nav-link active" href = "/untitled/admin.php">Admin</a>
+                        <?php
+                    } elseif (!(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true)) {
+                        ?>
+                        <a class = "nav-link active" href = "/untitled/admin_login.php">Admin</a>
+                        <?php
+                    }
+                    ?>
+
+                </li>
+                <li class = "nav-item">
+                    <?php
+                    if ((isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) || (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true)){
                         ?>
                         <a class = "nav-link active" href = "/untitled/logout.php">Logout</a>
                         <?php

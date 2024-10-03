@@ -1,4 +1,4 @@
-<?php include "includes\header.php"; ?>
+
 <?php include "db.php"?>
 <?php include "functions.php"?>
 <?php
@@ -35,9 +35,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             }
         }
     }
-    if(!empty($error)){
-        echo $error;
-    }
 }
 
 
@@ -56,6 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <title>Signup Page</title>
 </head>
 <body>
+    <?php include "includes\header.php"; ?>
     <h1 class = "d-flex justify-content-center"> Signup Page </h1>
     <form method = "post" action = "signup.php">
         <div class = "d-flex justify-content-center">
@@ -80,7 +78,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                         <input type = "email" class = "form-control" name = "email" placeholder = "Enter your email">
                     </label><br><br>
                 </div>
-                <input type = "submit" class="btn btn-primary" id = "login" value = "Create Account">
+                <input type = "submit" class="btn btn-primary" id = "login" value = "Create Account"><br><br>
+                <?php if(!empty($error)) {
+                    echo " <span style = 'color:red'> $error<br> </span>";
+                }?>
             </div>
         </div>
     </form>

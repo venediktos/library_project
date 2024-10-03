@@ -1,4 +1,4 @@
-<?php include "includes\header.php"; ?>
+
 <?php include "db.php" ?>
 <?php session_start();
 
@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login Page</title>
 </head>
 <body>
+<?php include "includes\header.php"; ?>
 <h2 class = "d-flex justify-content-center"> Login Page </h2> <br>
 <form method = "post" action = "login.php">
     <div class = "d-flex justify-content-center">

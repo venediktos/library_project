@@ -13,9 +13,10 @@ session_start();
     <title>Project</title>
 
   </head>
-  <body>
+  <body style="background-image: url('/untitled/includes/library_image.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
 
   <?php include("includes\header.php");?>
+
 
   <div class="jumbotron text-center">
       <h1>My First Bootstrap Page</h1>
