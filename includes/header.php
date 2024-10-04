@@ -1,24 +1,24 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-<nav class="navbar navbar-expand-lg bg-dark-subtle flex-wrap">
+<header class="navbar navbar-expand-lg navbar-dark bg-dark flex-wrap fixed-top py-3">
     <div class="container-fluid">
-        <a class="navbar-brand mx-auto" href="#">Library</a>
+        <a class="navbar-brand mx-auto" href="/untitled/">Library Project</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link active" href="/untitled/">
                         <i class="bi bi-house-door-fill"></i>
                         Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/untitled/books.php">Books</a>
+                    <a class="nav-link active" href="/untitled/books.php">Books</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link active" href="#">Pricing</a>
                 </li>
 
                 <li class="nav-item">
@@ -34,33 +34,30 @@
 
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class = "nav-item">
-                    <a class = "nav-link active" href = "https://github.com/venediktos">
-                        <i class="bi bi-github"></i>
-                        My Github</a>
-                </li>
-                <li class = "nav-item">
                     <?php
                     if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
-                    ?>
+                        ?>
                         <div class="dropdown">
-                            <a class = "nav-link active dropdown-toggle" href = "/untitled/account.php"><?php echo $_SESSION["username"] ?></a>
+                            <button class = "nav-link active dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" ><?php echo $_SESSION["username"] ?></button>
 
-                            <ul class="dropdown-menu">
-                                <li><a class="Manage Account" href="#">Action</a></li>
-                                <li><a class="" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                                <li><a class="dropdown-item" href = "/untitled/account.php">Manage Account</a></li>
+
+                                <li><a class = "dropdown-item" href = "/untitled/logout.php">Logout</a></li>
                             </ul>
                         </div>
-                    <?php
+                        <?php
                     } elseif (!(isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true)) {
                         ?>
                         <a class = "nav-link active" href = "/untitled/login.php">Login</a>
-                    <?php
+                        <?php
                     }
                     ?>
 
 
                 </li>
+
+
                 <li class = "nav-item">
                     <?php
                     if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
@@ -77,19 +74,15 @@
                 </li>
                 <li class = "nav-item">
                     <?php
-                    if ((isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) || (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true)){
+                    if (!((isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true)) && !((isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true))){
                         ?>
-                        <a class = "nav-link active" href = "/untitled/logout.php">Logout</a>
-                        <?php
-                    } else {
-                        ?>
+
                         <a class = "nav-link active" href = "/untitled/signup.php">Signup</a>
                         <?php
-                    }
-                    ?>
+                    } ?>
 
                 </li>
             </ul>
         </div>
     </div>
-</nav>
+</header>

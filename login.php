@@ -41,11 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Login Page</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <?php include "includes\header.php"; ?>
+
 <h2 class = "d-flex justify-content-center"> Login Page </h2> <br>
 <form method = "post" action = "login.php">
-    <div class = "d-flex justify-content-center">
+    <div class = "d-flex justify-content-center mt-5 py-5">
         <div class=”align-self-center”>
             <div class = "form-group">
                 <label for = "username">Username
@@ -57,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type = "password" class = "form-control" name = "password" placeholder = "Enter Password">
                 </label><br><br>
             </div>
-            <input type = "submit" class="btn btn-primary" id = "login"  value = "Login"><br><br>
+            <input type = "submit" class="btn btn-dark" id = "login"  value = "Login"><br><br>
             <?php if(!empty($error)) {
                 echo " <span style = 'color:red'> $error<br> </span>";
             }?>
@@ -65,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </form>
 
+<?php include("includes/footer.php");?>
 </body>
 </html>
 
