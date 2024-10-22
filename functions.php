@@ -24,3 +24,4 @@ function create_account($conn, $username, $password, $email){
     $query = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
     return mysqli_query($conn, $query);
 }
+

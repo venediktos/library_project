@@ -17,9 +17,8 @@ session_start();
 
   </head>
 
-  <body class = "d-flex flex-column min-vh-100" style="background-image: url('/untitled/includes/library_image.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
-
-    <?php include("includes\header.php");?>
+  <body class = "d-flex flex-column min-vh-100" style="background-image: url('/library_project/includes/library_image.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+  <?php include("includes\header.php");?>
       <div class="jumbotron text-center mt-5 py-5">
           <h1>My PHP Project</h1>
       </div>

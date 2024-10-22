@@ -1,7 +1,7 @@
 <?php include "db.php" ?>
 <?php
 session_start();
-
+// Fetch all books from the database
 $query = "SELECT * FROM books ORDER BY `book_id` DESC";
 $result = mysqli_query($conn, $query);
 $rows = mysqli_num_rows($result);
@@ -18,25 +18,27 @@ $rows = mysqli_num_rows($result);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Book Page</title>
 </head>
-<body class = "d-flex flex-column min-vh-100" style="background-image: url('/untitled/includes/library_image.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
+<body class = "d-flex flex-column min-vh-100" style="background-image: url('/library_project/includes/library_image.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;">
     <?php include("includes\header.php");?>
 
     <div class = "d-flex justify-content-center container mt-5 py-5">
-        <div class=”align-self-center”>
+        <div class="container">
             <?php
             if ($rows > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class = "book">';
-                    echo '<h2><a class="link-dark text-decoration-none d-flex justify-content-center" style="background-color: white"  href="book_page.php?book_id=' . $row['book_id'] . '">' . $row['title'] . '</a></h2>';
-                        echo '<p class = "d-flex justify-content-center">' . $row['author'] . '</p>';
-                        echo '<a class = "d-flex justify-content-center" href="book_page.php?book_id=' . $row["book_id"] . '">';
-                        echo '<img src="' . $row['img'] . '" alt="book image" width="258" height="387">';
-                        echo '</a>';
-                        if ($row['available_copies'] === 0){
-                            echo '<p class = "d-flex justify-content-center" style = "color:red">No copies left</p>';
-                        }
+                    // Display book details
+                    echo '<div class="book text-center mb-4">';
+                    echo '<h2><a class="link-dark text-decoration-none" style="background-color: white" href="book_page.php?book_id=' . $row['book_id'] . '">' . $row['title'] . '</a></h2>';
+                    echo '<p>' . $row['author'] . '</p>';
+                    echo '<a href="book_page.php?book_id=' . $row["book_id"] . '">';
+                    echo '<img src="' . $row['img'] . '" alt="book image" width="258" height="387">';
+                    echo '</a>';
+                    // Show message if no copies are available
+                    if ($row['available_copies'] === 0) {
+                        echo '<p style="color:red">No copies left</p>';
+                    }
                     echo '</div>';
-                    echo '<br><br><hr>';
+                    echo '<hr>';
                 }
             }
             ?>

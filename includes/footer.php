@@ -3,12 +3,12 @@
         <p class="navbar-brand nav justify-content-center mb-5 fs-1" >Library Project</p>
         <ul class="nav justify-content-center border-bottom border-top text-center mb-5">
             <li class="nav-item">
-                <a class="nav-link active text-white" href="/untitled/">
+                <a class="nav-link active text-white" href="/library_project/">
                     <i class="bi bi-house-door-fill"></i>
                     </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link active text-white" href="/untitled/books.php">Books</a>
+                <a class="nav-link active text-white" href="/library_project/books.php">Books</a>
             </li>
             <li class = "nav-item">
                 <a class = "nav-link active text-white" href = "https://github.com/venediktos">
